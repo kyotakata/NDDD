@@ -53,6 +53,20 @@
       <Version>2.2.7</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NDDD.Domain\NDDD.Domain.csproj">
+      <Project>{6accfa3e-5af4-4ac8-a23c-b55ea6948491}</Project>
+      <Name>NDDD.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NDDD.Infrastructure\NDDD.Infrastructure.csproj">
+      <Project>{488697c6-7d2c-4988-9794-0304d8d9d140}</Project>
+      <Name>NDDD.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NDDD.WinForm\NDDD.WinForm.csproj">
+      <Project>{1c41ca8d-7b6e-477f-b66a-f3b82285db1e}</Project>
+      <Name>NDDD.WinForm</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
