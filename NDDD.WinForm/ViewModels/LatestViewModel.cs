@@ -53,6 +53,7 @@ namespace NDDD.WinForm.ViewModels
         public void Search()
         {
             _measure = _measureRepository.GetLatest();
+            base.OnPropertyChanged();    // プロパティ変更通知
         }
     }
 }

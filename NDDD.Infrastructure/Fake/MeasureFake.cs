@@ -12,7 +12,10 @@ namespace NDDD.Infrastructure.Fake
     {
         public MeasureEntity GetLatest()
         {
-            throw new NotImplementedException();
+            return new MeasureEntity(
+                10,
+                Convert.ToDateTime("2020/12/12 12:34:56"),
+                123.341f);
         }
     }
 }
