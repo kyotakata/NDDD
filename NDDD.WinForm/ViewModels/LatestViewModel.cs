@@ -8,7 +8,10 @@ namespace NDDD.WinForm.ViewModels
     public class LatestViewModel : ViewModelBase
     {
         private IMeasureRepository _measureRepository;
-        private MeasureEntity _measure;
+        private string _areaIdText = string.Empty;
+        private string _measureDateText = string.Empty;
+        private string _measureValueText = string.Empty;
+
         public LatestViewModel(IMeasureRepository measureRepository)
         {
             _measureRepository = measureRepository;
@@ -16,44 +19,36 @@ namespace NDDD.WinForm.ViewModels
 
         public string AreaIdText 
         {
-            get
+            get{ return _areaIdText; }
+            set
             {
-                if (_measure == null)
-                {
-                    return string.Empty;
-                }
-
-                return _measure?.AreaId.ToString().PadLeft(4, '0');
+                SetProperty(ref _areaIdText, value);    // プロパティに変更があった時のみ通知する
             }
+
         }
         public string MeasureDateText 
         {
-            get
+            get { return _measureDateText; }
+            set
             {
-                if (_measure == null)
-                {
-                    return string.Empty;
-                }
-
-                return _measure?.MeasureDate.ToString("yyyy/MM/dd HH:mm:ss");
+                SetProperty(ref _measureDateText, value);    // プロパティに変更があった時のみ通知する
             }
         }
         public string MeasureValueText 
         {
-            get
+            get { return _measureValueText; }
+            set
             {
-                if(_measure == null)
-                {
-                    return string.Empty;
-                }
-                return Math.Round(_measure.MeasureValue, 2) + "℃";
+                SetProperty(ref _measureValueText, value);    // プロパティに変更があった時のみ通知する
             }
         }
 
         public void Search()
         {
-            _measure = _measureRepository.GetLatest();
-            base.OnPropertyChanged();    // プロパティ変更通知
+            var measure = _measureRepository.GetLatest();
+            AreaIdText = measure?.AreaId.ToString().PadLeft(4, '0');
+            MeasureDateText = measure?.MeasureDate.ToString("yyyy/MM/dd HH:mm:ss");
+            MeasureValueText = Math.Round(measure.MeasureValue, 2) + "℃";
         }
     }
 }
