@@ -1,4 +1,5 @@
-﻿using NDDD.Infrastructure.Fake;
+﻿using NDDD.Infrastructure;
+using NDDD.Infrastructure.Fake;
 using NDDD.WinForm.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace NDDD.WinForm.Views
 {
     public partial class LatestView : Form
     {
-        private LatestViewModel _viewModel = new LatestViewModel(new MeasureFake());
+        private LatestViewModel _viewModel = new LatestViewModel(Factories.CreateMeasure());
         public LatestView()
         {
             InitializeComponent();
