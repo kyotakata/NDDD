@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NDDD.Infrastructure.SqlServer
 {
-    public sealed class MeasureSqlServer : IMeasureRepository
+    internal sealed class MeasureSqlServer : IMeasureRepository
     {
         public MeasureEntity GetLatest()
         {

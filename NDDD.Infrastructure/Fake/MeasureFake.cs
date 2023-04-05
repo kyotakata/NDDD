@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NDDD.Infrastructure.Fake
 {
-    public class MeasureFake : IMeasureRepository
+    internal class MeasureFake : IMeasureRepository
     {
         public MeasureEntity GetLatest()
         {
