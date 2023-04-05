@@ -20,6 +20,12 @@ namespace NDDD.WinForm.Views
         {
             InitializeComponent();
 
+            toolStripStatusLabel1.Visible= false;
+
+#if DEBUG
+            toolStripStatusLabel1.Visible = true;
+#endif
+
             AreaIdTextBox.DataBindings.Add(
                 "Text",
                 _viewModel,
