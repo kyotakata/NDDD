@@ -1,4 +1,5 @@
-﻿using NDDD.Domain.Entities;
+﻿using NDDD.Domain;
+using NDDD.Domain.Entities;
 using NDDD.Domain.Repositories;
 using System;
 using System.Collections.Generic;
@@ -10,14 +11,13 @@ namespace NDDD.Infrastructure.Fake
 {
     internal class MeasureFake : IMeasureRepository
     {
-        internal const string FakePath = @"C:\Users\kyota\source\repos\NDDD\NDDD.Infrastructure\NDDDFake\";
         public MeasureEntity GetLatest()
         {
 
             try
             {
                 var lines = System.IO.File.ReadAllLines(
-                    FakePath + "MeasureFake.csv"); // ファイル名はクラス名.拡張子
+                    Shared.FakePath + @"\" + "MeasureFake.csv"); // ファイル名はクラス名.拡張子
                 var value = lines[0].Split(','/*値にカンマはない想定*/);    // 1件目だけとる
                 return new MeasureEntity(
                     Convert.ToInt32(value[0]),
