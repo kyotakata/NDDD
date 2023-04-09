@@ -12,6 +12,11 @@ namespace NDDD.WinForm.Views
         private void LoginButton_Click(object sender, System.EventArgs e)
         {
             Shared.LoginId = LoginTextBox.Text;
+
+            using (var f = new LatestView())
+            {
+                f.ShowDialog();
+            }
         }
     }
 }
