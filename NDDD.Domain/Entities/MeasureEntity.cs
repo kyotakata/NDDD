@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NDDD.Domain.ValueObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,13 +20,13 @@ namespace NDDD.Domain.Entities
             DateTime measureDate,
             float measureValue)
         {
-            AreaId= areaId;
+            AreaId= new AreaId(areaId);
             MeasureDate= measureDate;
             MeasureValue= measureValue;
         }
 
         // Measureテーブルからとってこれるであろうデータを持たせる
-        public int AreaId { get; }
+        public AreaId AreaId { get; }
         public DateTime MeasureDate { get; }
         public float MeasureValue { get; }
     }
