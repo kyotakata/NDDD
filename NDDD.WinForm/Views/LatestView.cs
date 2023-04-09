@@ -13,18 +13,13 @@ using System.Windows.Forms;
 
 namespace NDDD.WinForm.Views
 {
-    public partial class LatestView : Form
+    public partial class LatestView : BaseForm
     {
         private LatestViewModel _viewModel = new LatestViewModel();
         public LatestView()
         {
             InitializeComponent();
 
-            toolStripStatusLabel1.Visible= false;
-
-#if DEBUG
-            toolStripStatusLabel1.Visible = true;
-#endif
 
             AreaIdTextBox.DataBindings.Add(
                 "Text",
