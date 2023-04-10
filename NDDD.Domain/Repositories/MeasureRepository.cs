@@ -1,4 +1,5 @@
 ﻿using NDDD.Domain.Entities;
+using NDDD.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,10 @@ namespace NDDD.Domain.Repositories
         public MeasureEntity GetLatest()
         {
             var val1 = _measureRepository.GetLatest();
+            if (val1 == null)
+            {
+                throw new DataNotExixtsException();
+            }
             System.Threading.Thread.Sleep(1000);
             var val2 = _measureRepository.GetLatest();
             System.Threading.Thread.Sleep(1000);
