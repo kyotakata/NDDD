@@ -16,18 +16,18 @@ namespace NDDD.Domain.Entities
         /// <param name="measureDate"></param>
         /// <param name="measureValue"></param>
         public MeasureEntity(
-            int areaId, 
+            int areaId,
             DateTime measureDate,
             float measureValue)
         {
-            AreaId= new AreaId(areaId);
-            MeasureDate= measureDate;
-            MeasureValue= measureValue;
+            AreaId = new AreaId(areaId);
+            MeasureDate = new MeasureDate(measureDate);
+            MeasureValue = measureValue;
         }
 
         // Measureテーブルからとってこれるであろうデータを持たせる
         public AreaId AreaId { get; }
-        public DateTime MeasureDate { get; }
+        public MeasureDate MeasureDate { get; }
         public float MeasureValue { get; }
     }
 }
