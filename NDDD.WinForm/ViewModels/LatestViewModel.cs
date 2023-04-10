@@ -8,7 +8,7 @@ namespace NDDD.WinForm.ViewModels
 {
     public class LatestViewModel : ViewModelBase
     {
-        private IMeasureRepository _measureRepository;
+        private MeasureRepository _measureRepository;
         private string _areaIdText = string.Empty;
         private string _measureDateText = string.Empty;
         private string _measureValueText = string.Empty;
@@ -27,7 +27,7 @@ namespace NDDD.WinForm.ViewModels
         /// <param name="measureRepository"></param>
         public LatestViewModel(IMeasureRepository measureRepository)
         {
-            _measureRepository = measureRepository;
+            _measureRepository = new MeasureRepository(measureRepository);
         }
 
         public string AreaIdText 
