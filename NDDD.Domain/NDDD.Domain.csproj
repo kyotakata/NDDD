@@ -48,6 +48,7 @@
     <Compile Include="Shared.cs" />
     <Compile Include="ValueObjects\AreaId.cs" />
     <Compile Include="ValueObjects\MeasureDate.cs" />
+    <Compile Include="ValueObjects\MeasureValue.cs" />
     <Compile Include="ValueObjects\ValueObject.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -61,7 +61,7 @@ namespace NDDD.WinForm.ViewModels
             var measure = _measureRepository.GetLatest();
             AreaIdText = measure?.AreaId.DisplayValue;
             MeasureDateText = measure?.MeasureDate.DisplayValue;
-            MeasureValueText = Math.Round(measure.MeasureValue, 2) + "℃";
+            MeasureValueText = measure.MeasureValue.DisplayValue;
         }
     }
 }
