@@ -1,4 +1,5 @@
 ﻿using NDDD.Domain;
+using NDDD.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,6 +25,33 @@ namespace NDDD.WinForm.Views
 #endif
 
             UserIdLabel.Text = Shared.LoginId;
+        }
+
+        /// <summary>
+        /// エラー処理の共通化(protectedなのはBaseFormを継承しているクラスからのみ呼び出すため)
+        /// </summary>
+        /// <param name="ex"></param>
+        protected void ExceptionProc(Exception ex)
+        {
+            MessageBoxIcon icon = MessageBoxIcon.Error;// デフォルト値指定
+            string caption = "エラー";
+            var exceptionBase = ex as ExceptionBase;
+            // 変換できなかったらnull。もし意図的に出していない例外(ExceptionBaseに継承されている例外クラス以外の例外)が落ちてくるとnullになる
+            if (exceptionBase != null)
+            {
+                if (exceptionBase.Kind == ExceptionBase.ExceptionKind.Info)
+                {
+                    icon = MessageBoxIcon.Information;
+                    caption = "情報";
+                }
+                else if (exceptionBase.Kind == ExceptionBase.ExceptionKind.Warning)
+                {
+                    icon = MessageBoxIcon.Warning;
+                    caption = "警告";
+                }
+            }
+            MessageBox.Show(ex.Message, caption, MessageBoxButtons.OK, icon);
+
         }
     }
 }

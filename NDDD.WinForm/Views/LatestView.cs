@@ -44,24 +44,7 @@ namespace NDDD.WinForm.Views
             }
             catch (Exception ex)
             {
-                MessageBoxIcon icon = MessageBoxIcon.Error;// デフォルト値指定
-                string caption = "エラー";
-                var exceptionBase = ex as ExceptionBase;
-                // 変換できなかったらnull。もし意図的に出していない例外(ExceptionBaseに継承されている例外クラス以外の例外)が落ちてくるとnullになる
-                if(exceptionBase != null)
-                {
-                    if (exceptionBase.Kind == ExceptionBase.ExceptionKind.Info)
-                    {
-                        icon = MessageBoxIcon.Information;
-                        caption = "情報";
-                    }
-                    else if (exceptionBase.Kind == ExceptionBase.ExceptionKind.Warning)
-                    {
-                        icon = MessageBoxIcon.Warning;
-                        caption = "警告";
-                    }
-                }
-                MessageBox.Show(ex.Message, caption, MessageBoxButtons.OK, icon);
+                ExceptionProc(ex);
             }
         }
     }
