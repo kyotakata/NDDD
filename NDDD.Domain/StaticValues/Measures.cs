@@ -10,11 +10,21 @@ using System.Threading.Tasks;
 
 namespace NDDD.Domain.StaticValues
 {
+    /// <summary>
+    /// エリアごとの計測値のリストクラス
+    /// </summary>
     public static class Measures
     {
+        /// <summary>
+        /// エリアごとの直近値のリスト
+        /// </summary>
         private static List<MeasureEntity> _entities
             = new List<MeasureEntity>();
 
+        /// <summary>
+        /// リストの作成
+        /// </summary>
+        /// <param name="repository">計測リポジトリ</param>
         public static void Create(IMeasureRepository repository)
         {
             //lockの中の処理している間はほかのところで_entitiesを見に来ても待つ
@@ -26,11 +36,20 @@ namespace NDDD.Domain.StaticValues
 
         }
 
+        public static void Add(MeasureEntity entity)
+        {
+            lock (((ICollection)_entities).SyncRoot)
+            {
+                _entities.Add(entity);
+            }
+
+        }
+
         /// <summary>
-        /// 使いたい人用のメソッド。処理中に作り変えられないようにlockする
+        /// 直近値の取得(エリアID指定)。使いたい人用のメソッド。処理中に作り変えられないようにlockする
         /// </summary>
-        /// <param name="areaId"></param>
-        /// <returns></returns>
+        /// <param name="areaId">エリアID</param>
+        /// <returns>直近値</returns>
         public static MeasureEntity GetLatest(AreaId areaId)
         {
             lock (((ICollection)_entities).SyncRoot)

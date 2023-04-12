@@ -10,11 +10,11 @@ namespace NDDD.Domain.Entities
     public sealed class MeasureEntity
     {
         /// <summary>
-        /// 完全コンストラクタパターン(コンストラクタで指定しないとnewできないようにする)
+        /// 計測エンティティ。完全コンストラクタパターン(コンストラクタで指定しないとnewできないようにする)
         /// </summary>
-        /// <param name="areaId"></param>
-        /// <param name="measureDate"></param>
-        /// <param name="measureValue"></param>
+        /// <param name="areaId">エリアID</param>
+        /// <param name="measureDate">測定日時</param>
+        /// <param name="measureValue">測定値</param>
         public MeasureEntity(
             int areaId,
             DateTime measureDate,
@@ -26,8 +26,19 @@ namespace NDDD.Domain.Entities
         }
 
         // Measureテーブルからとってこれるであろうデータを持たせる
+        /// <summary>
+        /// エリアID
+        /// </summary>
         public AreaId AreaId { get; }
+
+        /// <summary>
+        /// 計測日時
+        /// </summary>
         public MeasureDate MeasureDate { get; }
+
+        /// <summary>
+        /// 計測値
+        /// </summary>
         public MeasureValue MeasureValue { get; }
     }
 }

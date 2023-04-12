@@ -1,25 +1,33 @@
 ﻿using NDDD.Domain.Entities;
 using NDDD.Domain.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NDDD.Domain.Repositories
 {
     /// <summary>
-    /// Repositoryの具象クラス
+    /// 計測リポジトリー。Repositoryの具象クラス
     /// </summary>
     public sealed class MeasureRepository
     {
+        /// <summary>
+        /// 計測リポシトリー
+        /// </summary>
         private IMeasureRepository _measureRepository;
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="measureRepository"></param>
         public MeasureRepository(IMeasureRepository measureRepository)
         {
             _measureRepository = measureRepository;
         }
 
+        /// <summary>
+        /// 直近値の取得
+        /// 3回計測した平均を返却する
+        /// </summary>
+        /// <returns>直近値</returns>
+        /// <exception cref="DataNotExixtsException"></exception>
         public MeasureEntity GetLatest()
         {
             var val1 = _measureRepository.GetLatest();

@@ -6,16 +6,19 @@ using System.Threading.Tasks;
 
 namespace NDDD.Domain.Logics
 {
+    /// <summary>
+    /// 計測分析
+    /// </summary>
     public static class MeasureAnalysis
     {
         /// <summary>
-        /// 例えば、データ5年分分析するメソッド
+        /// 実行。例えば、データ5年分分析するメソッド
         /// </summary>
-        /// <param name="value1"></param>
-        /// <param name="value2"></param>
-        /// <param name="value3"></param>
-        /// <param name="value4"></param>
-        /// <param name="value5"></param>
+        /// <param name="value1">値1</param>
+        /// <param name="value2">値2</param>
+        /// <param name="value3">値3</param>
+        /// <param name="value4">値4</param>
+        /// <param name="value5">値5</param>
         /// <returns></returns>
         public static float Execute(
             float value1,
