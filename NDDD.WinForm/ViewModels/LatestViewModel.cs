@@ -9,15 +9,33 @@ using System.Transactions;
 
 namespace NDDD.WinForm.ViewModels
 {
+    /// <summary>
+    /// 直近値のViewModel
+    /// </summary>
     public class LatestViewModel : ViewModelBase
     {
+        /// <summary>
+        /// 計測リポジトリー
+        /// </summary>
         private MeasureRepository _measureRepository;
+
+        /// <summary>
+        /// エリアID
+        /// </summary>
         private string _areaIdText = string.Empty;
+
+        /// <summary>
+        /// 計測日時
+        /// </summary>
         private string _measureDateText = string.Empty;
+
+        /// <summary>
+        /// 計測値
+        /// </summary>
         private string _measureValueText = string.Empty;
 
         /// <summary>
-        /// 本番コード用
+        /// コンストラクタ。本番コード用
         /// </summary>
         public LatestViewModel()
             : this(Factories.CreateMeasure())
@@ -25,7 +43,7 @@ namespace NDDD.WinForm.ViewModels
         }
 
         /// <summary>
-        /// テストコード用
+        /// コンストラクタ。テストコード用
         /// </summary>
         /// <param name="measureRepository"></param>
         public LatestViewModel(IMeasureRepository measureRepository)
@@ -33,6 +51,9 @@ namespace NDDD.WinForm.ViewModels
             _measureRepository = new MeasureRepository(measureRepository);
         }
 
+        /// <summary>
+        /// エリアID
+        /// </summary>
         public string AreaIdText
         {
             get { return _areaIdText; }
@@ -42,6 +63,10 @@ namespace NDDD.WinForm.ViewModels
             }
 
         }
+
+        /// <summary>
+        /// 計測日時
+        /// </summary>
         public string MeasureDateText
         {
             get { return _measureDateText; }
@@ -50,6 +75,10 @@ namespace NDDD.WinForm.ViewModels
                 SetProperty(ref _measureDateText, value);    // プロパティに変更があった時のみ通知する
             }
         }
+
+        /// <summary>
+        /// 計測値
+        /// </summary>
         public string MeasureValueText
         {
             get { return _measureValueText; }
@@ -59,6 +88,9 @@ namespace NDDD.WinForm.ViewModels
             }
         }
 
+        /// <summary>
+        /// 検索
+        /// </summary>
         public void Search()
         {
             //var measure = _measureRepository.GetLatest();
@@ -69,6 +101,9 @@ namespace NDDD.WinForm.ViewModels
             MeasureValueText = measure.MeasureValue.DisplayValue;
         }
 
+        /// <summary>
+        /// 保存
+        /// </summary>
         public void Save()
         {
             using (var scope = new TransactionScope())

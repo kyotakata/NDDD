@@ -5,8 +5,14 @@ using System.Windows.Forms;
 
 namespace NDDD.WinForm
 {
+    /// <summary>
+    /// Program
+    /// </summary>
     internal static class Program
     {
+        /// <summary>
+        /// ログ
+        /// </summary>
         private static log4net.ILog _logger =
            log4net.LogManager.GetLogger(
                System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -27,7 +33,7 @@ namespace NDDD.WinForm
             _logger.Error("エラーのログ");
             _logger.Fatal("致命的なログ");
 
-            LatestTimer.Start();    // タイマーをスタートさせる
+            LatestTimer.Start();    // タイマーをスタートさせる。タイミングは調整。
 
             Application.Run(new LoginView());// この行でアプリケーションが始まる
         }

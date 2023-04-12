@@ -12,12 +12,21 @@ using System.Windows.Forms;
 
 namespace NDDD.WinForm.Views
 {
+    /// <summary>
+    /// Viewの基底クラス
+    /// </summary>
     public partial class BaseForm : Form
     {
+        /// <summary>
+        /// ログ
+        /// </summary>
         private static log4net.ILog _logger =
             log4net.LogManager.GetLogger(
                 System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public BaseForm()
         {
             InitializeComponent();
@@ -32,7 +41,7 @@ namespace NDDD.WinForm.Views
         }
 
         /// <summary>
-        /// エラー処理の共通化(protectedなのはBaseFormを継承しているクラスからのみ呼び出すため)
+        /// 例外共通処理。エラー処理の共通化(protectedなのはBaseFormを継承しているクラスからのみ呼び出すため)
         /// </summary>
         /// <param name="ex"></param>
         protected void ExceptionProc(Exception ex)
@@ -61,20 +70,20 @@ namespace NDDD.WinForm.Views
         }
 
         /// <summary>
-        /// BaseFormのロードイベント
+        /// 起動時。BaseFormのロードイベント
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">コントロール</param>
+        /// <param name="e">イベント引数</param>
         private void BaseForm_Load(object sender, EventArgs e)
         {
             _logger.Info("open" + this.Name);
         }
 
         /// <summary>
-        /// BaseFormのクローズイベント
+        /// 終了時。BaseFormのクローズイベント
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">コントロール</param>
+        /// <param name="e">イベント引数</param>
         private void BaseForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             _logger.Info("close" + this.Name);
