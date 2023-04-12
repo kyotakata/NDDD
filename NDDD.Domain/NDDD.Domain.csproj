@@ -50,6 +50,7 @@
     <Compile Include="Repositories\IMeasureRepository.cs" />
     <Compile Include="Repositories\MeasureRepository.cs" />
     <Compile Include="Shared.cs" />
+    <Compile Include="StaticValues\Measures.cs" />
     <Compile Include="ValueObjects\AreaId.cs" />
     <Compile Include="ValueObjects\MeasureDate.cs" />
     <Compile Include="ValueObjects\MeasureValue.cs" />

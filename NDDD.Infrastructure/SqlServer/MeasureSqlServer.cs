@@ -14,5 +14,10 @@ namespace NDDD.Infrastructure.SqlServer
         {
             throw new NotImplementedException();
         }
+
+        public IReadOnlyList<MeasureEntity> GetLatests()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -14,5 +14,7 @@ namespace NDDD.Domain.Repositories
         /// </summary>
         /// <returns>Measureテーブルからとってきたデータを詰め込んで運ぶクラス</returns>
         MeasureEntity GetLatest();
+
+        IReadOnlyList<MeasureEntity> GetLatests();
     }
 }

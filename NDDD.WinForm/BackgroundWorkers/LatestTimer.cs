@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NDDD.Domain.StaticValues;
+using NDDD.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +21,9 @@ namespace NDDD.WinForm.BackgroundWorkers
 
         internal static void Start()
         {
-            _timer.Change(10000, 10000);
+            _timer.Change(0, 10000);
+            // 引数1：スタートの何秒後に動作させるか
+            // 引数2：何秒間隔で動作させるか
         }
 
         internal static void Stop()
@@ -39,6 +43,7 @@ namespace NDDD.WinForm.BackgroundWorkers
             {
                 _isWork = true;
                 //何か処理する
+                Measures.Create(Factories.CreateMeasure());
             }
             finally
             {
