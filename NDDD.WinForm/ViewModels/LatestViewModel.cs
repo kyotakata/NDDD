@@ -5,6 +5,7 @@ using NDDD.Domain.StaticValues;
 using NDDD.Domain.ValueObjects;
 using NDDD.Infrastructure;
 using System;
+using System.Transactions;
 
 namespace NDDD.WinForm.ViewModels
 {
@@ -66,6 +67,20 @@ namespace NDDD.WinForm.ViewModels
             AreaIdText = measure?.AreaId.DisplayValue;
             MeasureDateText = measure?.MeasureDate.DisplayValue;
             MeasureValueText = measure.MeasureValue.DisplayValue;
+        }
+
+        public void Save()
+        {
+            using (var scope = new TransactionScope())
+            {
+                //ヘッダー
+                //明細
+                //在庫
+                //履歴
+                //顧客情報
+
+                scope.Complete();
+            }
         }
     }
 }
